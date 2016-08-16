@@ -1,0 +1,15 @@
+﻿body {
+	overflow-y: auto;
+}
+
+input, textarea, select {
+	border-bottom: 1px solid #fff;
+}
+
+.contact-form input, .contact-form textarea, .contact-form select {
+	border-bottom: 1px solid #fff;
+}
+
+.animated {
+	visibility: visible;
+}

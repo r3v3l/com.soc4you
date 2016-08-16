@@ -1,5 +1,8 @@
 import javax.inject.*;
+
+import filters.CsrfFilter;
 import play.*;
+import play.filters.csrf.CSRFFilter;
 import play.mvc.EssentialFilter;
 import play.http.HttpFilters;
 import play.mvc.*;
@@ -39,7 +42,7 @@ public class Filters implements HttpFilters {
       if (env.mode().equals(Mode.DEV)) {
           return new EssentialFilter[] { exampleFilter };
       } else {
-         return new EssentialFilter[] {};
+         return new EssentialFilter[] {  };
       }
     }
 
