@@ -51,14 +51,14 @@
         }
     }
     var DIRECTIVE_KEY_MAP = {
-        Y: "years",
-        m: "months",
-        w: "weeks",
-        d: "days",
-        D: "totalDays",
-        H: "hours",
-        M: "minutes",
-        S: "seconds"
+        Y: "lat",
+        m: "miesięcy",
+        w: "tygodni",
+        d: "dni",
+        D: "dni",
+        H: "godzin",
+        M: "minut",
+        S: "sekund"
     };
     function strftime(offsetObject) {
         return function(format) {
