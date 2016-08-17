@@ -34,4 +34,18 @@ public class NewsletterModel extends Model {
     public static Finder<Long, NewsletterModel> find =
             new Finder<Long, NewsletterModel>(Long.class, NewsletterModel.class);
 
+    public static NewsletterModel findByEmail(String email){
+
+        try {
+
+            return find.where().eq("email", email).findUnique();
+
+        }catch (NullPointerException e){
+
+            return null;
+
+        }
+
+    }
+
 }

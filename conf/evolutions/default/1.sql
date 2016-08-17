@@ -9,8 +9,6 @@ create table contact_model (
   email                         varchar(255) not null,
   message                       TEXT not null,
   creation_date                 timestamp not null,
-  constraint uq_contact_model_username unique (username),
-  constraint uq_contact_model_email unique (email),
   constraint pk_contact_model primary key (id)
 );
 create sequence contact_model_seq;

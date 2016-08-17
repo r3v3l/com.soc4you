@@ -399,10 +399,10 @@ Version: 1.0
 			var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
 			
 			$.ajax({
-				url:'email.php',
+				url:'/newsletter',
 				type :'POST',
 				dataType:'json',
-				data: {'email': email},
+				data: $('.subscriptionForm').serialize(),
 				
 				success: function(data){
 					if(data.error){

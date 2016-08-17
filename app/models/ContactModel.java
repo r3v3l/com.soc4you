@@ -20,13 +20,13 @@ public class ContactModel extends Model {
     @GeneratedValue
     public Long id;
 
-    @Column(length = 255, nullable = false, unique = true)
+    @Column(length = 255, nullable = false)
     @Constraints.Required
     @Constraints.MinLength(1)
     @Constraints.MaxLength(255)
     public String username;
 
-    @Column(length = 255, nullable = false, unique = true)
+    @Column(length = 255, nullable = false)
     @Constraints.Required
     @Constraints.MaxLength(255)
     @Constraints.Email
