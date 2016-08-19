@@ -382,10 +382,10 @@ Version: 1.0
 		if($.find('#counter')[0]) {
 			$('#counter').countdown('2016/09/08 00:00:00').on('update.countdown', function(event) {
 				var $this = $(this).html(event.strftime(''
-					+ '<div class="counter-container"><div class="counter-box first"><div class="number">%-D</div><span>Dni<span></div>'
-					+ '<div class="counter-box"><div class="number">%H</div><span>Godzin</span></div>'
-					+ '<div class="counter-box"><div class="number">%M</div><span>Minut</span></div>'
-					+ '<div class="counter-box last"><div class="number">%S</div><span>Sekund</span></div></div>'
+					+ '<div class="counter-container"><div class="counter-box first"><div class="number">%-D</div><span>Day%!d<span></div>'
+					+ '<div class="counter-box"><div class="number">%H</div><span>Hours</span></div>'
+					+ '<div class="counter-box"><div class="number">%M</div><span>Minutes</span></div>'
+					+ '<div class="counter-box last"><div class="number">%S</div><span>Seconds</span></div></div>'
 				));
 			});
 		};
