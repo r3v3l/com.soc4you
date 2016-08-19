@@ -380,7 +380,7 @@ Version: 1.0
 		/*	COUNTDOWN
 		/* ------------------------------------------------------------------------ */
 		if($.find('#counter')[0]) {
-			$('#counter').countdown('2016/09/08 00:00:00').on('update.countdown', function(event) {
+			$('#counter').countdown('2016/09/08 12:00:00').on('update.countdown', function(event) {
 				var $this = $(this).html(event.strftime(''
 					+ '<div class="counter-container"><div class="counter-box first"><div class="number">%-D</div><span>Day%!d<span></div>'
 					+ '<div class="counter-box"><div class="number">%H</div><span>Hours</span></div>'
