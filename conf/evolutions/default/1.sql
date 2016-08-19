@@ -4,30 +4,26 @@
 # --- !Ups
 
 create table contact_model (
-  id                            bigint not null,
+  id                            bigint auto_increment not null,
   username                      varchar(255) not null,
   email                         varchar(255) not null,
   message                       TEXT not null,
-  creation_date                 timestamp not null,
+  creation_date                 datetime(6) not null,
   constraint pk_contact_model primary key (id)
 );
-create sequence contact_model_seq;
 
 create table newsletter_model (
-  id                            bigint not null,
+  id                            bigint auto_increment not null,
   email                         varchar(255) not null,
-  creation_date                 timestamp not null,
+  creation_date                 datetime(6) not null,
   constraint uq_newsletter_model_email unique (email),
   constraint pk_newsletter_model primary key (id)
 );
-create sequence newsletter_model_seq;
 
 
 # --- !Downs
 
 drop table if exists contact_model;
-drop sequence if exists contact_model_seq;
 
 drop table if exists newsletter_model;
-drop sequence if exists newsletter_model_seq;
 

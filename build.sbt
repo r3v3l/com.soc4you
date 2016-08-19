@@ -11,7 +11,7 @@ libraryDependencies ++= Seq(
   cache,
   javaWs,
   filters,
-  "mysql" % "mysql-connector-java" % "6.0.3"
+  "mysql" % "mysql-connector-java" % "5.1.39"
 )
 playEbeanModels in Compile := Seq("models.*")
 playEbeanDebugLevel := 4
