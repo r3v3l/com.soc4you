@@ -14,7 +14,7 @@ POST    /kontakt                    controllers.ContactController.index()
 GET     /konto-uzytkownika                              controllers.UserActionController.index()
 POST    /konto-uzytkownika/zaloguj                      controllers.UserActionController.signIn()
 POST    /konto-uzytkownika/zarejestruj                  controllers.SignUpController.signUp()
-POST    /konto-uzytkownika/przypomnij-haslo             controllers.UserActionController.forgotPassword()
+POST    /konto-uzytkownika/przypomnij-haslo             controllers.ForgotPasswordController.index()
 
 # An example controller showing how to use dependency injection
 GET     /count                      controllers.CountController.count

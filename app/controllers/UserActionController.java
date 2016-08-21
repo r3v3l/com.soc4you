@@ -36,29 +36,6 @@ public class UserActionController extends Controller {
 
     }
 
-    public static class SignUp {
-
-        @Constraints.Required
-        @Constraints.MaxLength(255)
-        public String username;
-
-        @Constraints.Required
-        @Constraints.MaxLength(255)
-        @Constraints.Email
-        public String email;
-
-        @Constraints.Required
-        @Constraints.MaxLength(255)
-        @Constraints.Email
-        public String password;
-
-        @Constraints.Required
-        @Constraints.MaxLength(255)
-        @Constraints.Email
-        public String confirmPassword;
-
-    }
-
     @AddCSRFToken
     public Result index(){
 

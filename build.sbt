@@ -1,6 +1,6 @@
 name := """com.soc4you"""
 
-version := "1.0.2-SNAPSHOT"
+version := "1.0.3-SNAPSHOT"
 
 lazy val root = (project in file(".")).enablePlugins(PlayJava, PlayEbean)
 

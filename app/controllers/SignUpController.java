@@ -6,6 +6,7 @@ import helpers.SendEmail;
 import models.SignUpUserModel;
 import org.jetbrains.annotations.NotNull;
 import play.data.Form;
+import play.data.validation.Constraints;
 import play.data.validation.ValidationError;
 import play.mvc.Controller;
 import play.mvc.Result;
@@ -24,16 +25,39 @@ import java.util.Map;
  */
 public class SignUpController extends Controller {
 
+    public static class SignUp {
+
+        @Constraints.Required
+        @Constraints.MaxLength(255)
+        public String username;
+
+        @Constraints.Required
+        @Constraints.MaxLength(255)
+        @Constraints.Email
+        public String email;
+
+        @Constraints.Required
+        @Constraints.MaxLength(255)
+        @Constraints.Email
+        public String password;
+
+        @Constraints.Required
+        @Constraints.MaxLength(255)
+        @Constraints.Email
+        public String confirmPassword;
+
+    }
+
     public Result signUp() throws MessagingException {
 
         UserFingerprintController.saveData("New user signup.");
-        Form<UserActionController.SignUp> signUpForm = Form.form(UserActionController.SignUp.class).bindFromRequest();
+        Form<SignUp> signUpForm = Form.form(SignUp.class).bindFromRequest();
         if(signUpForm.hasErrors()){
             String errorMsg = getString(signUpForm);
             return signUpErrors(SignUpFormErrorsMessage.message() + errorMsg);
         }
 
-        UserActionController.SignUp signUp = signUpForm.get();
+        SignUp signUp = signUpForm.get();
 
         if((signUp.username.length() < 3) || (signUp.username.length() > 255)){
             return signUpWarning(InvalidUserNameLengthMessage.message());
@@ -69,7 +93,7 @@ public class SignUpController extends Controller {
     }
 
     @NotNull
-    private String getString(Form<UserActionController.SignUp> signUpForm) {
+    private String getString(Form<SignUp> signUpForm) {
         String errorMsg = "";
         Map<String, List<ValidationError>> errorsAll = signUpForm.errors();
         for (String field : errorsAll.keySet()) {
@@ -82,7 +106,7 @@ public class SignUpController extends Controller {
     }
 
     @NotNull
-    private SignUpUserModel getSignUpUserModel(UserActionController.SignUp signUp) {
+    private SignUpUserModel getSignUpUserModel(SignUp signUp) {
         SignUpUserModel signUpUserModel = new SignUpUserModel();
         signUpUserModel.email = signUp.email;
         signUpUserModel.username = signUp.username;
