@@ -10,6 +10,12 @@ POST    /newsletter                 controllers.NewsletterController.index()
 #Contact
 POST    /kontakt                    controllers.ContactController.index()
 
+#UserAction
+GET     /konto-uzytkownika                              controllers.UserActionController.index()
+POST    /konto-uzytkownika/zaloguj                      controllers.UserActionController.signIn()
+POST    /konto-uzytkownika/zarejestruj                  controllers.SignUpController.signUp()
+POST    /konto-uzytkownika/przypomnij-haslo             controllers.UserActionController.forgotPassword()
+
 # An example controller showing how to use dependency injection
 GET     /count                      controllers.CountController.count
 # An example controller showing how to write asynchronous code

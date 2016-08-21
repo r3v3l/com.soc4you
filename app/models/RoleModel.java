@@ -37,6 +37,9 @@ public class RoleModel extends Model {
     @Formats.DateTime(pattern = "yyyy/mm/dd")
     public Date updateDate;
 
+    @ManyToMany
+    public List<UserModel> users;
+
     public static Finder<Long, RoleModel> find = new Finder<Long, RoleModel>(Long.class, RoleModel.class);
 
     public static int rowCount(){

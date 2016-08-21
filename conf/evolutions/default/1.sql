@@ -523,6 +523,12 @@ create table role_model (
   constraint pk_role_model primary key (id)
 );
 
+create table role_model_user_model (
+  role_model_id                 bigint not null,
+  user_model_id                 bigint not null,
+  constraint pk_role_model_user_model primary key (role_model_id,user_model_id)
+);
+
 create table service_model (
   id                            bigint auto_increment not null,
   name                          varchar(255) not null,
@@ -638,6 +644,19 @@ create table team_member_model (
   constraint pk_team_member_model primary key (id)
 );
 
+create table user_fingerprint_model (
+  id                            bigint auto_increment not null,
+  remote_address                varchar(255),
+  current_host                  varchar(255),
+  current_method                varchar(255),
+  current_path                  varchar(255),
+  current_uri                   varchar(255),
+  current_version               varchar(255),
+  user_message                  TEXT,
+  creation_date                 datetime(6),
+  constraint pk_user_fingerprint_model primary key (id)
+);
+
 create table user_model (
   id                            bigint auto_increment not null,
   username                      varchar(255) not null,
@@ -651,10 +670,10 @@ create table user_model (
   constraint pk_user_model primary key (id)
 );
 
-create table user_roles_model (
-  id                            bigint auto_increment not null,
-  creation_date                 datetime(6) not null,
-  constraint pk_user_roles_model primary key (id)
+create table user_model_role_model (
+  user_model_id                 bigint not null,
+  role_model_id                 bigint not null,
+  constraint pk_user_model_role_model primary key (user_model_id,role_model_id)
 );
 
 alter table article_category_model add constraint fk_article_category_model_articlecategorystatus foreign key (articlecategorystatus) references status_model (id) on delete restrict on update restrict;
@@ -754,6 +773,12 @@ create index ix_review_model_reviewcategory on review_model (reviewcategory);
 alter table role_model add constraint fk_role_model_rolestatus foreign key (rolestatus) references status_model (id) on delete restrict on update restrict;
 create index ix_role_model_rolestatus on role_model (rolestatus);
 
+alter table role_model_user_model add constraint fk_role_model_user_model_role_model foreign key (role_model_id) references role_model (id) on delete restrict on update restrict;
+create index ix_role_model_user_model_role_model on role_model_user_model (role_model_id);
+
+alter table role_model_user_model add constraint fk_role_model_user_model_user_model foreign key (user_model_id) references user_model (id) on delete restrict on update restrict;
+create index ix_role_model_user_model_user_model on role_model_user_model (user_model_id);
+
 alter table service_model add constraint fk_service_model_servicestatus foreign key (servicestatus) references status_model (id) on delete restrict on update restrict;
 create index ix_service_model_servicestatus on service_model (servicestatus);
 
@@ -774,6 +799,12 @@ create index ix_team_member_model_teammemberstatus on team_member_model (teammem
 
 alter table user_model add constraint fk_user_model_userstatus foreign key (userstatus) references status_model (id) on delete restrict on update restrict;
 create index ix_user_model_userstatus on user_model (userstatus);
+
+alter table user_model_role_model add constraint fk_user_model_role_model_user_model foreign key (user_model_id) references user_model (id) on delete restrict on update restrict;
+create index ix_user_model_role_model_user_model on user_model_role_model (user_model_id);
+
+alter table user_model_role_model add constraint fk_user_model_role_model_role_model foreign key (role_model_id) references role_model (id) on delete restrict on update restrict;
+create index ix_user_model_role_model_role_model on user_model_role_model (role_model_id);
 
 
 # --- !Downs
@@ -875,6 +906,12 @@ drop index ix_review_model_reviewcategory on review_model;
 alter table role_model drop foreign key fk_role_model_rolestatus;
 drop index ix_role_model_rolestatus on role_model;
 
+alter table role_model_user_model drop foreign key fk_role_model_user_model_role_model;
+drop index ix_role_model_user_model_role_model on role_model_user_model;
+
+alter table role_model_user_model drop foreign key fk_role_model_user_model_user_model;
+drop index ix_role_model_user_model_user_model on role_model_user_model;
+
 alter table service_model drop foreign key fk_service_model_servicestatus;
 drop index ix_service_model_servicestatus on service_model;
 
@@ -895,6 +932,12 @@ drop index ix_team_member_model_teammemberstatus on team_member_model;
 
 alter table user_model drop foreign key fk_user_model_userstatus;
 drop index ix_user_model_userstatus on user_model;
+
+alter table user_model_role_model drop foreign key fk_user_model_role_model_user_model;
+drop index ix_user_model_role_model_user_model on user_model_role_model;
+
+alter table user_model_role_model drop foreign key fk_user_model_role_model_role_model;
+drop index ix_user_model_role_model_role_model on user_model_role_model;
 
 drop table if exists article_category_model;
 
@@ -974,6 +1017,8 @@ drop table if exists review_roles_model;
 
 drop table if exists role_model;
 
+drop table if exists role_model_user_model;
+
 drop table if exists service_model;
 
 drop table if exists shop_category_model;
@@ -990,7 +1035,9 @@ drop table if exists status_model;
 
 drop table if exists team_member_model;
 
+drop table if exists user_fingerprint_model;
+
 drop table if exists user_model;
 
-drop table if exists user_roles_model;
+drop table if exists user_model_role_model;
 

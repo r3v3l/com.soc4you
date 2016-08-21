@@ -56,6 +56,10 @@ public class UserModel extends Model {
     @Formats.DateTime(pattern = "yyyy/mm/dd")
     public Date updateDate;
 
+    @ManyToMany
+    public List<RoleModel> roles;
+
+
     public void setPassword(String password) {
         this.shaPassword = getSha512(password);
     }

@@ -1,6 +1,6 @@
 name := """com.soc4you"""
 
-version := "1.0.1-SNAPSHOT"
+version := "1.0.2-SNAPSHOT"
 
 lazy val root = (project in file(".")).enablePlugins(PlayJava, PlayEbean)
 
@@ -11,7 +11,9 @@ libraryDependencies ++= Seq(
   cache,
   javaWs,
   filters,
-  "mysql" % "mysql-connector-java" % "5.1.39"
+  "mysql" % "mysql-connector-java" % "5.1.39",
+  "javax.mail" % "mail" % "1.5.0-b01",
+  "javax.mail" % "javax.mail-api" % "1.5.6"
 )
 playEbeanModels in Compile := Seq("models.*")
 playEbeanDebugLevel := 4
