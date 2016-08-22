@@ -19,7 +19,7 @@ public class HomeController extends Controller {
      */
     @AddCSRFToken
     public Result index() {
-        return ok(index.render());
+        return ok("Welcome to OUR API.");
     }
 
 }

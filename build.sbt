@@ -1,8 +1,10 @@
 name := """com.soc4you"""
 
-version := "1.0.3-SNAPSHOT"
+version := "1.0.4-SNAPSHOT"
 
-lazy val root = (project in file(".")).enablePlugins(PlayJava, PlayEbean)
+lazy val root = (project in file(".")).enablePlugins(PlayJava, PlayEbean).dependsOn(common).aggregate(common)
+
+lazy val common = (project in file("modules/common")).enablePlugins(PlayJava, PlayEbean)
 
 scalaVersion := "2.11.7"
 

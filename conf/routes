@@ -4,17 +4,7 @@
 
 # An example controller showing a sample home page
 GET     /                           controllers.HomeController.index
-
-#Newsletter
-POST    /newsletter                 controllers.NewsletterController.index()
-#Contact
-POST    /kontakt                    controllers.ContactController.index()
-
-#UserAction
-GET     /konto-uzytkownika                              controllers.UserActionController.index()
-POST    /konto-uzytkownika/zaloguj                      controllers.UserActionController.signIn()
-POST    /konto-uzytkownika/zarejestruj                  controllers.SignUpController.signUp()
-POST    /konto-uzytkownika/przypomnij-haslo             controllers.ForgotPasswordController.index()
+->  /admin                          common.Routes
 
 # An example controller showing how to use dependency injection
 GET     /count                      controllers.CountController.count
