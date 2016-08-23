@@ -5,7 +5,7 @@ import models.common.CommonStatusModel;
 /**
  * Created by adrian on 22.08.16.
  */
-public class FindCommonStatusModelByStatusName {
+public class FindCommonStatusModelByStatusNameRepository {
 
     public CommonStatusModel findByName(String statusName){
 

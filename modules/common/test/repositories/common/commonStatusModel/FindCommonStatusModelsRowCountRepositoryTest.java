@@ -9,7 +9,7 @@ import static play.test.Helpers.*;
 /**
  * Created by adrian on 22.08.16.
  */
-public class FindCommonStatusModelsRowCountTest extends WithApplication {
+public class FindCommonStatusModelsRowCountRepositoryTest extends WithApplication {
 
     public int exceptedSize = 7;
 
@@ -26,7 +26,8 @@ public class FindCommonStatusModelsRowCountTest extends WithApplication {
 
     public int rowCount()  {
 
-        FindCommonStatusModelsRowCount findCommonStatusModelsRowCount = new FindCommonStatusModelsRowCount();
+        FindCommonStatusModelsRowCountRepository findCommonStatusModelsRowCount =
+                new FindCommonStatusModelsRowCountRepository();
         return findCommonStatusModelsRowCount.rowCount();
 
     }

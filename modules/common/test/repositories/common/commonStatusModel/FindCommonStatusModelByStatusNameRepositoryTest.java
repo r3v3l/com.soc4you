@@ -13,7 +13,7 @@ import static play.test.Helpers.running;
 /**
  * Created by adrian on 22.08.16.
  */
-public class FindCommonStatusModelByStatusNameTest extends WithApplication {
+public class FindCommonStatusModelByStatusNameRepositoryTest extends WithApplication {
 
     public String activeStatusName = "active";
     public String inactiveStatusName = "inactive";
@@ -83,7 +83,8 @@ public class FindCommonStatusModelByStatusNameTest extends WithApplication {
 
     public CommonStatusModel findByName(String statusName){
 
-        FindCommonStatusModelByStatusName findCommonStatusModelByStatusName = new FindCommonStatusModelByStatusName();
+        FindCommonStatusModelByStatusNameRepository findCommonStatusModelByStatusName =
+                new FindCommonStatusModelByStatusNameRepository();
         return findCommonStatusModelByStatusName.findByName(statusName);
 
     }

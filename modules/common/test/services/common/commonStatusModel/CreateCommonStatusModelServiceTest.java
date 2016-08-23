@@ -1,9 +1,10 @@
-package repositories.common.commonStatusModel;
+package services.common.commonStatusModel;
 
 import models.common.CommonStatusModel;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import repositories.common.commonStatusModel.FindCommonStatusModelByStatusNameRepository;
 
 import static org.junit.Assert.*;
 import static play.test.Helpers.fakeApplication;
@@ -13,7 +14,7 @@ import static play.test.Helpers.running;
 /**
  * Created by adrian on 22.08.16.
  */
-public class CreateCommonStatusModelTest {
+public class CreateCommonStatusModelServiceTest {
 
     public String existsStatus = "active";
     public String newStatus = "newStatus";
@@ -24,8 +25,8 @@ public class CreateCommonStatusModelTest {
 
         running(fakeApplication(inMemoryDatabase("test")), () -> {
 
-            FindCommonStatusModelByStatusName findCommonStatusModelByStatusName =
-                    new FindCommonStatusModelByStatusName();
+            FindCommonStatusModelByStatusNameRepository findCommonStatusModelByStatusName =
+                    new FindCommonStatusModelByStatusNameRepository();
             CommonStatusModel commonStatusModel = findCommonStatusModelByStatusName.findByName(newStatus);
             if(commonStatusModel != null){
                 commonStatusModel.delete();
@@ -64,7 +65,7 @@ public class CreateCommonStatusModelTest {
 
     public boolean create(String statusName) {
 
-        CreateCommonStatusModel createCommonStatusModel = new CreateCommonStatusModel();
+        CreateCommonStatusModelService createCommonStatusModel = new CreateCommonStatusModelService();
         return createCommonStatusModel.create(statusName);
 
     }
@@ -74,8 +75,8 @@ public class CreateCommonStatusModelTest {
 
         running(fakeApplication(inMemoryDatabase("test")), () -> {
 
-            FindCommonStatusModelByStatusName findCommonStatusModelByStatusName =
-                    new FindCommonStatusModelByStatusName();
+            FindCommonStatusModelByStatusNameRepository findCommonStatusModelByStatusName =
+                    new FindCommonStatusModelByStatusNameRepository();
             CommonStatusModel commonStatusModel = findCommonStatusModelByStatusName.findByName(newStatus);
             if(commonStatusModel != null){
                 commonStatusModel.delete();
