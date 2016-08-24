@@ -3,8 +3,10 @@ import play.GlobalSettings;
 import play.Logger;
 import repositories.common.commonRoleModel.FindCommonRoleModelsRowCountRepository;
 import repositories.common.commonStatusModel.FindCommonStatusModelsRowCountRepository;
+import repositories.common.commonUserModel.FindCommonUserRowCountRepository;
 import services.common.commonRoleModel.CreateCommonRoleModelService;
 import services.common.commonStatusModel.CreateCommonStatusModelService;
+import services.common.userModelCommon.CreateCommonUserModelService;
 
 /**
  * Created by adrian on 19.08.16.
@@ -17,6 +19,16 @@ public class Global extends GlobalSettings {
 
         createStatuses();
         createRoles();
+        createUsers();
+
+    }
+
+    public void createUsers(){
+
+        FindCommonUserRowCountRepository findCommonUserRowCountRepository = new FindCommonUserRowCountRepository();
+        if(findCommonUserRowCountRepository.rowCount() == 0) {
+            createUser("r3v", "r3v@protonmail.ch", "F@ntaSpr1te", "active", "admin");
+        }
 
     }
 
@@ -55,6 +67,23 @@ public class Global extends GlobalSettings {
             createRole("moderator", "active");
             createRole("admin", "active");
             createRole("business", "active");
+
+        }
+
+    }
+
+    public void createUser(
+            String username, String email, String password, String statusName, String roleName
+    ){
+
+        CreateCommonUserModelService createCommonUserModelService = new CreateCommonUserModelService();
+        if(createCommonUserModelService.create(username, email, password, statusName, roleName)){
+
+            Logger.info("User " +username+ " was created successfully.");
+
+        }else {
+
+            Logger.info("User " +username+ " could not be created.");
 
         }
 

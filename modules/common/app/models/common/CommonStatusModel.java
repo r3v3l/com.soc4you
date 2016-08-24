@@ -37,6 +37,9 @@ public class CommonStatusModel extends Model {
     @OneToMany(mappedBy = "roleStatus", cascade = CascadeType.ALL)
     private List<CommonRoleModel> commonRoleModels;
 
+    @OneToMany(mappedBy = "userStatus", cascade = CascadeType.ALL)
+    private List<CommonUserModel> commonUserModels;
+
     public Finder<Long, CommonStatusModel> find =
             new Finder<Long, CommonStatusModel>(Long.class, CommonStatusModel.class);
 

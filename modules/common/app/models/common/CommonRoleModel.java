@@ -6,6 +6,7 @@ import play.data.validation.Constraints;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by adrian on 23.08.16.
@@ -23,11 +24,6 @@ public class CommonRoleModel extends Model {
     @Constraints.MaxLength(255)
     public String roleName;
 
-    @Column(nullable = false)
-    @Constraints.Required
-    @Formats.DateTime(pattern = "yyyy/mm/dd")
-    public Date creationDate;
-
     @ManyToOne
     @JoinColumn(name = "roleStatus", referencedColumnName = "id")
     public CommonStatusModel roleStatus;
@@ -35,7 +31,15 @@ public class CommonRoleModel extends Model {
     @Column(nullable = false)
     @Constraints.Required
     @Formats.DateTime(pattern = "yyyy/mm/dd")
+    public Date creationDate;
+
+    @Column(nullable = false)
+    @Constraints.Required
+    @Formats.DateTime(pattern = "yyyy/mm/dd")
     public Date updateDate;
+
+    @OneToMany(mappedBy = "userRole", cascade = CascadeType.ALL)
+    private List<CommonUserModel> commonUserModels;
 
     public Finder<Long, CommonRoleModel> find = new Finder<Long, CommonRoleModel>(Long.class, CommonRoleModel.class);
 
