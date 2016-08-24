@@ -2,7 +2,7 @@ import play.sbt.PlayImport._
 
 name := """common"""
 
-version := "1.0.4-SNAPSHOT"
+version := "1.0.5-SNAPSHOT"
 
 lazy val common = (project in file(".")).enablePlugins(PlayJava, PlayEbean)
 

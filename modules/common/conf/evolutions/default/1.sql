@@ -3,6 +3,19 @@
 
 # --- !Ups
 
+create table common_fingerprinting_model (
+  id                            bigint auto_increment not null,
+  remote_address                varchar(255) not null,
+  current_host                  varchar(255) not null,
+  current_method                varchar(255) not null,
+  current_path                  varchar(255) not null,
+  current_uri                   varchar(255) not null,
+  current_version               varchar(255) not null,
+  user_message                  TEXT not null,
+  creationdate                  datetime(6),
+  constraint pk_common_fingerprinting_model primary key (id)
+);
+
 create table common_role_model (
   id                            bigint auto_increment not null,
   role_name                     varchar(255) not null,
@@ -56,6 +69,8 @@ drop index ix_common_user_model_userstatus on common_user_model;
 
 alter table common_user_model drop foreign key fk_common_user_model_userrole;
 drop index ix_common_user_model_userrole on common_user_model;
+
+drop table if exists common_fingerprinting_model;
 
 drop table if exists common_role_model;
 
