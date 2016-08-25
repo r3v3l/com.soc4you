@@ -1,12 +1,10 @@
 name := """com.soc4you"""
 
-version := "1.0.5-SNAPSHOT"
+version := "1.0.6-SNAPSHOT"
 
-lazy val root = (project in file(".")).enablePlugins(PlayJava, PlayEbean).dependsOn(common, user).aggregate(common, user)
+lazy val root = (project in file(".")).enablePlugins(PlayJava, PlayEbean).dependsOn(common).aggregate(common)
 
 lazy val common = (project in file("modules/common")).enablePlugins(PlayJava, PlayEbean)
-
-lazy val user = (project in file("modules/user")).enablePlugins(PlayJava, PlayEbean).dependsOn(common).aggregate(common)
 
 scalaVersion := "2.11.7"
 
@@ -17,7 +15,8 @@ libraryDependencies ++= Seq(
   filters,
   "mysql" % "mysql-connector-java" % "5.1.39",
   "javax.mail" % "mail" % "1.5.0-b01",
-  "javax.mail" % "javax.mail-api" % "1.5.6"
+  "javax.mail" % "javax.mail-api" % "1.5.6",
+  "org.json" % "json" % "20160810"
 )
 playEbeanModels in Compile := Seq("models.*")
 playEbeanDebugLevel := 4

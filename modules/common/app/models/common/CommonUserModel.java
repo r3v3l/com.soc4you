@@ -63,7 +63,7 @@ public class CommonUserModel extends Model {
     public Finder<Long, CommonUserModel> find =
             new Finder<Long, CommonUserModel>(Long.class, CommonUserModel.class);
 
-    public static byte[] getSha512(String value) {
+    public byte[] getSha512(String value) {
         try {
             return MessageDigest.getInstance("SHA-512").digest(value.getBytes("UTF-8"));
         }
