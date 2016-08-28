@@ -16,5 +16,8 @@ POST    /user/signUp                controllers.user.UserSignUpController.index(
 POST    /user/forgot                controllers.user.UserForgotPasswordController.index()
 GET     /user/logout                controllers.user.UserLogoutController.logout()
 GET     /user/isAuthenticated       controllers.user.UserIsAuthenticated.isAuthenticated()
+POST    /user/changeUsername        controllers.user.UserDataController.changeUsername()
+POST    /user/changeEmail           controllers.user.UserDataController.changeEmail()
+POST    /user/changePassword        controllers.user.UserDataController.changePassword()
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)

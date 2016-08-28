@@ -10,7 +10,7 @@ import play.mvc.Result;
  */
 public class UserIsAuthenticated extends Controller {
 
-    public static Result isAuthenticated() {
+    public Result isAuthenticated() {
         if(session().get("username") == null) {
             return unauthorized();
         } else {

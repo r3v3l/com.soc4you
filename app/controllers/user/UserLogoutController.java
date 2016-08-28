@@ -9,7 +9,7 @@ import play.mvc.Result;
  */
 public class UserLogoutController extends Controller {
 
-    public static Result logout() {
+    public Result logout() {
         session().clear();
         CommonJsonResponseController commonJsonResponseController = new CommonJsonResponseController();
         return ok(commonJsonResponseController.buildJsonResponse("success", "Logged out successfully"));
