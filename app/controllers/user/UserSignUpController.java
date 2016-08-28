@@ -41,6 +41,9 @@ public class UserSignUpController extends Controller {
         @Constraints.MaxLength(255)
         public String confirmPassword;
 
+        @Constraints.Required
+        public String termOfUse;
+
     }
 
     public Result index(){
@@ -65,17 +68,18 @@ public class UserSignUpController extends Controller {
             commonFingerprintingController.save("Email " + signUp.email+ " exists. Please try again.");
             signUpErrors.put("emailExists", "Email " + signUp.email+ " exists. Please try again.");
         }
-
+        /**
         if(!checkPassword(signUp.password)){
             commonFingerprintingController.save("Password isn't strong.");
             signUpErrors.put("invalidPasswordFormat", "Password must contains one special char, one upercase letter, " +
                     "one lowercase letter, one number and 12 chars."
             );
         }
+         */
 
-        if(signUp.password.equals(signUp.confirmPassword)){
+        if(!signUp.password.equals(signUp.confirmPassword)){
             commonFingerprintingController.save("Passwords mismatch.");
-            signUpErrors.put("passwordsError","Passwords mismatch.");
+            signUpErrors.put("passwordsMismatch","Passwords mismatch.");
         }
 
         if(signUpErrors.size() != 0){
